@@ -23,7 +23,13 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.10", "2.13.1")
+crossScalaVersions := List(
+  "2.10.7",
+  "2.11.12",
+  "2.12.10",
+  "2.13.1",
+  "0.22.0-RC1"
+)
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "3.2.4",
