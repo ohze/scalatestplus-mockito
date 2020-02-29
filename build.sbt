@@ -1,4 +1,4 @@
-name := "mockito-3.2"
+name := "mockito-3.3"
 
 organization := "org.scalatestplus"
 
@@ -32,7 +32,7 @@ crossScalaVersions := List(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito" % "mockito-core" % "3.2.4",
+  "org.mockito" % "mockito-core" % "3.3.0",
   "org.scalatest" %% "scalatest" % "3.1.1"
 )
 
