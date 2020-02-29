@@ -1,6 +1,6 @@
-name := "mockito-3.3"
+name := "scalatestplus-mockito-3.3"
 
-organization := "org.scalatestplus"
+organization := "com.sandinh"
 
 version := "3.1.1.0"
 
