@@ -1,6 +1,6 @@
 name := "mockito-3.3"
 
-organization := "org.scalatestplus"
+organization := "com.sandinh"
 
 version := "3.2.0.0"
 
@@ -39,6 +39,17 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest-core" % "3.2.0", 
   "org.scalatest" %% "scalatest-funsuite" % "3.2.0" % "test"
 )
+
+libraryDependencies := {
+  val old = libraryDependencies.value
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((0, n)) if n > 24 => old.map {
+      case m if m.organization == "org.scalatest" => m.withOrganization("com.sandinh")
+      case m => m
+    }
+    case _ => old
+  }
+}
 
 Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
 
@@ -80,10 +91,7 @@ OsgiKeys.additionalHeaders:= Map(
   "Bundle-Vendor" -> "Artima, Inc."
 )
 
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  Some("publish-releases" at nexus + "service/local/staging/deploy/maven2")
-}
+publishTo := sonatypePublishToBundle.value
 
 publishMavenStyle := true
 
@@ -100,5 +108,3 @@ pomExtra := (
     </developerConnection>
   </scm>
 )
-
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
